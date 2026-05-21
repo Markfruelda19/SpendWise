@@ -82,3 +82,7 @@ This project was created to improve my skills in:
 ## 👨‍💻 Developer
 
 Created by Mark as a portfolio project for web development practice.
+<img width="1916" height="915" alt="image" src="https://github.com/user-attachments/assets/38a72477-76ae-433c-b446-8a453d4675ae" />
+<img width="1905" height="919" alt="image" src="https://github.com/user-attachments/assets/ad56fd02-bc9e-4d41-9b13-a03a8e4a1109" />
+
+
