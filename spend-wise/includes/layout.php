@@ -70,7 +70,7 @@ body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--t
   border-bottom: 1px solid var(--border);
 }
 .sidebar-logo-icon { width:32px;height:32px;background:var(--accent);border-radius:8px;display:grid;place-items:center;font-size:15px;color:#0b0f0e;flex-shrink:0; }
-.sidebar-logo-text { font-family:'Syne',sans-serif;font-size:1.15rem;font-weight:800;letter-spacing:-.03em; }
+.sidebar-logo-text { font-family:'Syne',sans-serif;font-size:1.06rem;font-weight:800;letter-spacing:-.03em; }
 .sidebar-logo-text span { color:var(--accent); }
 nav { padding: 16px 12px; flex: 1; }
 .nav-group { margin-bottom: 24px; }
