@@ -59,7 +59,7 @@ SpendWise/
 
 ## 🚀 Future Improvements
 
-* Export reports to PDF/Excel
+* Export reports to PDF/Excel (DONE✅)
 * Dark mode
 * Custom categories
 * Budget goals
