@@ -49,3 +49,17 @@ CREATE TABLE IF NOT EXISTS transactions (
 -- ─────────────────────────────────────────
 CREATE INDEX idx_transactions_user ON transactions(user_id);
 CREATE INDEX idx_transactions_date ON transactions(transaction_date);
+
+-- Budget Goals
+-- ─────────────────────────────────────────
+CREATE TABLE IF NOT EXISTS budget_goals (
+    id           INT AUTO_INCREMENT PRIMARY KEY,
+    user_id      INT NOT NULL,
+    category_id  INT,                        -- NULL = overall monthly budget
+    name         VARCHAR(150) NOT NULL,
+    amount       DECIMAL(12,2) NOT NULL,
+    period       ENUM('monthly','yearly') NOT NULL DEFAULT 'monthly',
+    created_at   TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id)     REFERENCES users(id)      ON DELETE CASCADE,
+    FOREIGN KEY (category_id) REFERENCES categories(id) ON DELETE SET NULL
+);
