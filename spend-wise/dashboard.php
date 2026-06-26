@@ -248,4 +248,69 @@ tr:hover td { background:rgba(255,255,255,.02); }
 
 </div><!-- .dash-grid -->
 
+<?php
+// ── Budget Goals summary (top 4 by urgency) ─────────────────
+$bg_stmt = $pdo->prepare("
+    SELECT
+        g.id, g.name, g.amount, g.period,
+        c.name AS category_name,
+        COALESCE((
+            SELECT SUM(t.amount)
+            FROM transactions t
+            WHERE t.user_id = g.user_id
+              AND t.type = 'expense'
+              AND (g.category_id IS NULL OR t.category_id = g.category_id)
+              AND (
+                  (g.period='monthly' AND DATE_FORMAT(t.transaction_date,'%Y-%m') = ?)
+               OR (g.period='yearly'  AND YEAR(t.transaction_date) = ?)
+              )
+        ), 0) AS spent
+    FROM budget_goals g
+    LEFT JOIN categories c ON g.category_id = c.id
+    WHERE g.user_id = ?
+    ORDER BY (spent / g.amount) DESC
+    LIMIT 4
+");
+$bg_stmt->execute([date('Y-m'), date('Y'), $current_user_id]);
+$dash_goals = $bg_stmt->fetchAll();
+?>
+
+<?php if (!empty($dash_goals)): ?>
+<div style="margin-top:20px;">
+  <div class="panel">
+    <div class="panel-header">
+      <span class="panel-title">Budget Goals</span>
+      <a href="budget_goals.php" class="btn-ghost" style="padding:6px 14px;font-size:.78rem;">Manage →</a>
+    </div>
+    <div style="padding:16px 22px;display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px;">
+      <?php foreach ($dash_goals as $g):
+        $spent   = (float)$g['spent'];
+        $limit   = (float)$g['amount'];
+        $pct     = $limit > 0 ? min(round(($spent/$limit)*100,1),100) : 0;
+        $raw_pct = $limit > 0 ? ($spent/$limit)*100 : 0;
+        if ($raw_pct >= 100)    $st = 'over';
+        elseif ($raw_pct >= 80) $st = 'warn';
+        else                     $st = 'ok';
+        $colors = ['ok'=>'var(--accent)','warn'=>'var(--warn)','over'=>'var(--danger)'];
+        $col = $colors[$st];
+      ?>
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:14px 16px;">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+          <span style="font-size:.85rem;font-weight:500;color:var(--text)"><?= htmlspecialchars($g['name']) ?></span>
+          <span style="font-size:.72rem;color:<?= $col ?>;font-weight:600"><?= $pct ?>%</span>
+        </div>
+        <div style="width:100%;height:6px;background:var(--border);border-radius:6px;overflow:hidden;margin-bottom:8px;">
+          <div style="height:6px;border-radius:6px;background:<?= $col ?>;width:<?= $pct ?>%;transition:width .5s;"></div>
+        </div>
+        <div style="display:flex;justify-content:space-between;font-size:.76rem;color:var(--muted);">
+          <span>₱<?= number_format($spent,2) ?> spent</span>
+          <span>₱<?= number_format($limit,2) ?> limit</span>
+        </div>
+      </div>
+      <?php endforeach; ?>
+    </div>
+  </div>
+</div>
+<?php endif; ?>
+
 <?php close_layout(); ?>
