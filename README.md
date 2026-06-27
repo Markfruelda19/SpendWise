@@ -62,7 +62,7 @@ SpendWise/
 * Export reports to PDF/Excel (DONE✅)
 * Dark mode
 * Custom categories
-* Budget goals
+* Budget goals (DONE✅)
 * Mobile app version
 
 ---
