@@ -86,4 +86,9 @@ Created by Mark as a portfolio project for web development practice.
 <img width="1905" height="919" alt="image" src="https://github.com/user-attachments/assets/ad56fd02-bc9e-4d41-9b13-a03a8e4a1109" />
 <img width="1916" height="915" alt="image" src="https://github.com/user-attachments/assets/38a72477-76ae-433c-b446-8a453d4675ae" />
 
+Light Mode
+<img width="1906" height="919" alt="image" src="https://github.com/user-attachments/assets/3f98837f-dafc-4a32-b6b4-e209c98d6287" />
+<img width="1919" height="920" alt="image" src="https://github.com/user-attachments/assets/e7d0adaf-2128-43e5-a360-c94ddcf426f7" />
+
+
 
