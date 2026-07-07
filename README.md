@@ -63,7 +63,7 @@ SpendWise/
 * Dark mode (DONE✅)
 * Custom categories
 * Budget goals (DONE✅)
-* Mobile app version
+* Mobile app version (DONE✅)
 
 ---
 
@@ -90,6 +90,9 @@ Dark Mode
 Light Mode
 <img width="1906" height="919" alt="image" src="https://github.com/user-attachments/assets/3f98837f-dafc-4a32-b6b4-e209c98d6287" />
 <img width="1919" height="920" alt="image" src="https://github.com/user-attachments/assets/e7d0adaf-2128-43e5-a360-c94ddcf426f7" />
+
+Mobile app version
+<img width="720" height="1457" alt="image" src="https://github.com/user-attachments/assets/0eabc241-2c54-4b46-9d3c-c1bedd21bcfe" />
 
 
 
